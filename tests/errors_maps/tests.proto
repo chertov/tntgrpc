@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package tests;
+message Request {}
+message ReplyMapIntStr {
+    map<int32,string> map = 1;
+}
+message ReplyMapStrInt {
+    map<string,int32> map = 1;
+}
+service TestService {
+    rpc MapIncorrectKeyType (Request) returns (ReplyMapIntStr) {}
+    rpc MapIncorrectValueType (Request) returns (ReplyMapStrInt) {}
+}

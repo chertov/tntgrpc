@@ -1,22 +1,12 @@
-TNTGRPC is a tool for creating grpc C++ library for Tarantool application server. This example explains how to use the GRPC generator for Tarantool application server.
-
-First, we need to build tntgrpc image.
-```sh
-git clone https://github.com/jonywtf/tntgrpc.git
-cd ./tntgrpc
-./build.sh
-
-cd ./example
-```
+This example explains how to use GRPC generator for Tarantool application server.
 
 ## Start tarantool GRPC server
-
 Remove the grpc library 'mytntgrpclib.so' and the docker container if exists.
 ```sh
 rm -rf mytntgrpclib.so; docker rm mytarantool
 ```
 
-On the step we are trying to generate mytntgrpclib.so from helloworld.proto file.
+On this step we are trying to generate mytntgrpclib.so from helloworld.proto and test.proto files.
 We need only *.proto files to generate native library 'mytntgrpclib.so'.
 We can to use docker container from 'tntgrpc' image for this.
 We can specify the library name ('mytntgrpclib' in this example).
@@ -43,12 +33,10 @@ docker run --name mytarantool -it \
     tarantool /opt/tarantool/app.lua
 ```
 
-all the steps in ```./run_server.sh```
-
 ## Start GRPC client
 
-Ok, we should to build GRPC client for Tarantool GRPC service.
-Let's build it with Docker. It's supereasy!
+Ok, we should build GRPC client for Tarantool GRPC service.
+Let's build it with docker. It's supereasy!
 
 We have Dockerfile with build tools, grpc and golang compilers. Let's build it.
 ```sh
@@ -70,5 +58,3 @@ Now, we can to start the client for your platform.
 ```sh
 ./client/bin/client_mac
 ```
-
-all the steps in ```./run_client.sh```

@@ -1,0 +1,9 @@
+{
+  "name": "tntgrpc_tests",
+  "version": "1.0.0",
+  "description": "JS tests for Tarantool GRPC project",
+  "keywords": [],
+  "dependencies": {
+    "grpc": "latest"
+  }
+}

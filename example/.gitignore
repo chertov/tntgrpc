@@ -1,0 +1,11 @@
+*
+!*/
+
+!*.proto
+!*.lua
+!*.sh
+!*.md
+!.dockerignore
+
+!.gitignore
+!*/.gitignore

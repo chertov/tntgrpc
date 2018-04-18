@@ -1,0 +1,9 @@
+{
+  "name": "tntgrpc_tools",
+  "version": "1.0.0",
+  "description": "JS tools for Tarantool GRPC project",
+  "keywords": [],
+  "dependencies": {
+    "js-yaml": "latest"
+  }
+}

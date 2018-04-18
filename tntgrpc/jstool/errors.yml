@@ -1,0 +1,123 @@
+start_code: 1000
+errors:
+    IncorrectType:
+        params: [typePath, luatype]
+        lang:
+            en: "value has incorrect type '" + luatype + "'" + ", value type of '" + typePath + "' is required"
+            ru: "значение имеет некорректный тип '" + luatype + "'" + ", необходимо значение типа '" + typePath + "'"
+
+    # Service
+    ServiceNotFound:
+        params: [service]
+        lang:
+            en: "Can't find service '" + service + "'"
+            ru: "Не удалось найти сервис '" + service + "'"
+    ProcedureNotFound:
+        params: [service, procedure]
+        lang:
+            en: "Can't find procedure '" + service + "::" + procedure + "'"
+            ru: "Не удалось найти процедуру '" + service + "::" + procedure + "'"
+    CallProcedureError:
+        params: [service, procedure, message]
+        lang:
+            en: "Error while calling procedure '" + service + "::" + procedure + "' \n" + message
+            ru: "Ошибка во время вызова процедуры '" + service + "::" + procedure + "' \n" + message
+
+    # Enums
+    toLuaEnumValueIsIncorrect:
+        params: [enumType, invalidValue]
+        args:
+            - invalidValue: [int32_t, std::to_string]
+        lang:
+            en: "incorrect value '" + invalidValue + "' of enum '" + enumType + "' was detected"
+            ru: "обнаружено недопустимое значение '" + invalidValue + "' перечисления '" + enumType + "'"
+    EnumIsNotStringOrInt:
+        params: [enumType, luatype]
+        lang:
+            en: "enum<" + enumType + "> type of lua object must be 'LUA_TSTRING' or 'LUA_TNUMBER'. Type of lua object is '" + luatype + "'"
+            ru: "enum<" + enumType + "> тип lua объекта перечисления должен быть 'LUA_TSTRING' или 'LUA_TNUMBER'. Тип lua объекта '" + luatype + "'"
+    EnumValueIsntIncorrect:
+        params: [enumType, invalidValue]
+        args:
+            - invalidValue: [int32_t, std::to_string]
+        lang:
+            en: "enum<" + enumType + "> has incorrect enum value '" + invalidValue + "'"
+            ru: "enum<" + enumType + "> имеет некорректное значение '" + invalidValue + "'"
+
+    # Repeated Errors
+    RepeatedIsNotLuaTable:
+        params: [repeatedType, luatype]
+        lang:
+            en: "repeated<" + repeatedType + "> isn't lua table, type of lua object is '" + luatype + "'"
+            ru: "repeated<" + repeatedType + "> не является таблицей lua, тип lua объекта '" + luatype + "'"
+    RepeatedIndexIncorrectType:
+        params: [repeatedType, index, luatype]
+        args:
+            - index: [int64_t, std::to_string]
+        lang:
+            en: "repeated<" + repeatedType + ">[" + index + "] has incorrect type '" + luatype + "'. Type of index must be 'LUA_TNUMBER'"
+            ru: "repeated<" + repeatedType + ">[" + index + "] имеет некорректный тип '" + luatype + "'. Тип индекса должен быть 'LUA_TNUMBER'"
+    RepeatedIndexIsntInt:
+        params: [repeatedType, index, indexValue]
+        args:
+            - index: [int64_t, std::to_string]
+              indexValue: [double, std::to_string]
+        lang:
+            en: "repeated<" + repeatedType + ">[" + index + "] has incorrect value '" + indexValue + "'. Value of index must be unsigned integer"
+            ru: "repeated<" + repeatedType + ">[" + index + "] имеет некорректное значение '" + indexValue + "'. Значение индекса должно быть положительным целым"
+    RepeatedIndexIncorrectOrder:
+        params: [repeatedType, index, key]
+        args:
+            - index: [int64_t, std::to_string]
+              key: [int64_t, std::to_string]
+        lang:
+            en: "repeated<" + repeatedType + ">[" + index + "] has incorrect value '" + key + "'"
+            ru: "repeated<" + repeatedType + ">[" + index + "] имеет некорректное значение '" + key + "'"
+    RepeatedValueIncorrectType:
+        params: [repeatedType, index, luatype]
+        args:
+            - index: [int64_t, std::to_string]
+        lang:
+            en: "repeated<" + repeatedType + ">[" + index + "] has incorrect type '" + luatype + "', type '" + repeatedType + "' is required"
+            ru: "repeated<" + repeatedType + ">[" + index + "] имеет некорректный тип '" + luatype + "', требуется тип '" + repeatedType + "'"
+    RepeatedParseFailure:
+        params: [repeatedType]
+        lang:
+            en: "repeated<" + repeatedType + "> has incorrect data"
+            ru: "repeated<" + repeatedType + "> содержит некорректные данные"
+
+    # Messages Errors
+    MessageNotLuaTable:
+        params: [typePath, luatype]
+        lang:
+            en: "message<" + typePath + "> isn't lua table, type of lua object is '" + luatype + "'"
+            ru: "message<" + typePath + "> не является таблицей lua, тип lua объекта '" + luatype + "'"
+    MessageNotExistingField:
+        params: [typePath, fieldName]
+        lang:
+            en: "message<" + typePath + "> doesn't has filed with name '" + fieldName + "'"
+            ru: "message<" + typePath + "> не имеет поля с именем '" + fieldName + "'"
+    MessageFieldParseFailure:
+        params: [typePath, fieldName, fieldType]
+        lang:
+            en: "message<" + typePath + ">" + (fieldName.size() > 0 ? "." + fieldName + "<" + fieldType + ">" : "") + " has incorrect data"
+            ru: "message<" + typePath + ">" + (fieldName.size() > 0 ? "." + fieldName + "<" + fieldType + ">" : "") + " содержит некорректные данные"
+
+    # Map<keyType,valueType> Errors
+    MapNotLuaTable:
+        params: [keyType, valueType, luatype]
+        lang:
+            en: "map<" + keyType + "," + valueType + "> isn't lua table, type of lua object is '" + luatype + "'"
+            ru: "map<" + keyType + "," + valueType + "> не является таблицей lua, тип lua объекта '" + luatype + "'"
+    MapElementKeyIncorrectType:
+        params: [keyType, valueType, keyValue, luatype]
+        lang:
+            en: "map<" + keyType + "," + valueType + ">[" + keyValue + "] has incorrect type of key '" + luatype + "', type '" + keyType + "' is required"
+            ru: "map<" + keyType + "," + valueType + ">[" + keyValue + "] имеет некорректный тип ключа '" + luatype + "', требуется тип '" + keyType + "'"
+    MapElementValueIncorrectType:
+        params: [keyType, valueType, keyValue, luatype]
+        args:
+            - keyValue: [int64_t, std::to_string]
+        lang:
+            en: "map<" + keyType + "," + valueType + ">[" + keyValue + "] has incorrect type of value '" + luatype + "', type '" + valueType + "' is required"
+            ru: "map<" + keyType + "," + valueType + ">[" + keyValue + "] имеет некорректный тип значения '" + luatype + "', требуется тип '" + valueType + "'"

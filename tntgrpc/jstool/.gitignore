@@ -1,0 +1,11 @@
+*
+!*/
+!/*.js
+!/errors.yml
+!/package.json
+!*.md
+
+!.gitignore
+!*/.gitignore
+
+node_modules

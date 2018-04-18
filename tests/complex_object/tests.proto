@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package tests;
+
+enum Countries {
+    RUSSIA = 0;
+    CYPRYS = 1;
+    SRILANKA = 2;
+    USA = 3;
+    INDONESIA = 4;
+}
+
+message Outsider {
+    bool outer = 1;
+    string name = 2;
+    map<string,Outsider> mapInMap = 3;
+}
+
+message Request {
+    repeated Outsider outsiders = 1;
+}
+message Reply {
+    message Outsider {
+        string local = 1;
+    }
+    string simple1 = 1;
+    int32 simple2 = 2;
+    bool beOrNotToBe = 3;
+    Countries nextStation = 5;
+    Outsider mustBeLocal = 6;
+    tests.Outsider mustBeOuter = 7;
+
+    repeated int32 OneTwoThree = 8;
+    repeated string OneTwoThreeStrs = 9;
+    repeated Countries nextStations = 10;
+    repeated tests.Outsider outsiders = 11;
+
+    map<int32,Outsider> friends = 12;
+    map<string,tests.Outsider> enemies = 13;
+}
+service TestService {
+    rpc ItsOk1 (Request) returns (Reply) {}
+    rpc ItsOk2 (Request) returns (Reply) {}
+}

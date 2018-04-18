@@ -1,0 +1,9 @@
+*
+!src/*
+!CMakeLists.txt
+!run.sh
+!jstool/errors.yml
+!jstool/generrors.js
+!jstool/package.json
+!proto_tool/app/src/app/*.go
+!proto_tool/build.sh

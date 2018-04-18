@@ -1,0 +1,14 @@
+*
+!*/
+
+!/app/src/app/*.go
+!*.sh
+!*.md
+!Dockerfile
+
+!.gitignore
+!*/.gitignore
+
+/bin
+/src
+/pkg

@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package tests;
+
+message Request {
+    string message = 1;
+}
+message Reply {
+    string message = 1;
+}
+service TestService {
+    rpc Procedure (Request) returns (Reply) {}
+    rpc DoesNotExistsProcedure (Request) returns (Reply) {}
+    rpc ExistsProcedure (Request) returns (Reply) {}
+    rpc ErrorWhileCallProcedure (Request) returns (Reply) {}
+}

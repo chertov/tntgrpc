@@ -1,0 +1,8 @@
+*
+!*/
+
+!/*.sh
+!/*.md
+
+!.gitignore
+!*/.gitignore

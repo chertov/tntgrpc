@@ -1,0 +1,11 @@
+*
+!*/
+
+!app/**/*.go
+!build.sh
+
+!.gitignore
+!*/.gitignore
+
+/src/
+/pkg/

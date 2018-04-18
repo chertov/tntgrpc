@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package tests;
+
+message Request {
+    string message = 1;
+}
+message OutsiderReply {
+    string message = 1;
+}
+message Reply {
+    message ReplyInReply {
+        string message = 1;
+        OutsiderReply outsider = 2;
+    }
+    ReplyInReply rr = 1;
+}
+service TestService {
+    rpc NilReturn (Request) returns (Reply) {}
+    rpc MessageNotLuaTable (Request) returns (Reply) {}
+    rpc IncorrectFieldType (Request) returns (Reply) {}
+    rpc NonExistingField (Request) returns (Reply) {}
+}
